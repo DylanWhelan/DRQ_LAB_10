@@ -3,6 +3,8 @@ import './App.css';
 import Header from './components/header';
 import Content from './components/content';
 import Footer from './components/footer';
+import Read  from './components/read';
+import Create from './components/create';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
@@ -26,6 +28,8 @@ class App extends Component {
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/footer">Footer</Nav.Link>
               <Nav.Link href="/header">Header</Nav.Link>
+              <Nav.Link href="/read">Read</Nav.Link>
+              <Nav.Link href="/create">Create</Nav.Link>
             </Nav>
           </Container>
         </Navbar>
@@ -33,6 +37,8 @@ class App extends Component {
           <Route path="/" exact><Content /></Route>
           <Route path="/header"><Header></Header></Route>
           <Route path="/footer"><Footer></Footer></Route>
+          <Route path="/read"><Read></Read></Route>
+          <Route path="/create"><Create></Create></Route>
         </Switch>
       </div>
       </Router>
