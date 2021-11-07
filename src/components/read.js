@@ -12,7 +12,8 @@ class Read extends React.Component
 
     // Once the component has been inserted into DOM, the movies json array is populated using axios
     componentDidMount() {
-       axios.get('https://jsonblob.com/api/jsonblob/894944504570986496')
+        // The url has been changed to that of the local host
+       axios.get('http://localhost:4000/api/movies')
         .then((response) => {
             this.setState({ movies: response.data.movies })
         })

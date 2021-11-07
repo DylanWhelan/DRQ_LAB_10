@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 
 class Create extends Component
@@ -43,6 +44,21 @@ class Create extends Component
     onSubmit(e){
         e.preventDefault();
         console.log("Button has been clicked. \nMovie: "+this.state.Title+"\nYear: "+this.state.Year+"\nPoster Url: "+this.state.Poster);
+
+        // This is the movie object that is passed into the post
+        const newMovie = {
+            Title: this.state.Title,
+            Year: this.state.Year,
+            Poster: this.state.Poster
+        }
+        // This is where the post is called and the movie object passed in
+        axios.post('http://localhost:4000/api/movies',newMovie)
+        .then((res)=>{
+            console.log(res);
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
     }
 
     render(){
