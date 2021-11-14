@@ -15,7 +15,8 @@ class Read extends React.Component
         // The url has been changed to that of the local host
        axios.get('http://localhost:4000/api/movies')
         .then((response) => {
-            this.setState({ movies: response.data.movies })
+            // This has been changed to accept input from the mongodb server by removing the movies, and setting it to just response.data
+            this.setState({ movies: response.data })
         })
         .catch(function( error) {
             console.log(error);
