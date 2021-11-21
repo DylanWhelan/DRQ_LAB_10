@@ -68,6 +68,19 @@ app.post('/api/movies', (req, res)=>{
     res.send('Item Added');
 })
 
+
+// This is the function used to update the item on the mongodb database
+app.put('/api/movies/:id', (req, res)=>{
+    console.log("Update movie: " + req.params.id);
+    console.log(req.body);
+
+    // This is finds and update the associated movie object in the database
+    MovieModel.findByIdAndUpdate(req.params.id,req.body, {new:true},
+        (err,data)=>{
+            res.send(data);
+        })
+})
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })

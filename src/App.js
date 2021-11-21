@@ -5,6 +5,7 @@ import Content from './components/content';
 import Footer from './components/footer';
 import Read  from './components/read';
 import Create from './components/create';
+import Edit from './components/edit';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
@@ -39,6 +40,7 @@ class App extends Component {
           <Route path="/footer"><Footer></Footer></Route>
           <Route path="/read"><Read></Read></Route>
           <Route path="/create"><Create></Create></Route>
+          <Route path='/edit/:id' component = {Edit}></Route>
         </Switch>
       </div>
       </Router>
