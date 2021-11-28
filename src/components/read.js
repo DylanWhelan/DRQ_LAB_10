@@ -4,6 +4,13 @@ import Movies from "./movies";
 
 class Read extends React.Component
 {
+    constructor(){
+        super();
+
+        // Binding for ReloadData
+        this.ReloadData = this.ReloadData.bind(this);
+    }
+
     // movies are no longer hardcoded and are now grabbed from json link displayed below
     state = {
         movies: [
@@ -23,11 +30,23 @@ class Read extends React.Component
         })
     }
 
+    // ReloadData method is copy of componentDidMount method
+    ReloadData(){
+        axios.get('http://localhost:4000/api/movies')
+        .then((response) => {
+            this.setState({ movies: response.data })
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }
+
+    // ReloadData is passed into movie item through this method
     render(){
         return(
             <div>
                 <h3>This is the Read component!</h3>
-                <Movies movies = {this.state.movies}></Movies>
+                <Movies movies = {this.state.movies} ReloadData={this.ReloadData}></Movies>
             </div>
         )
     }
