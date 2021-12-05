@@ -4,6 +4,13 @@ const port = 4000
 const cors = require('cors');
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
+const path = require('path');
+
+// Locates build folder
+app.use(express.static(path.join(__dirname, '../build')));
+
+// Locates static folder
+app.use('/static', express.static(path.join(__dirname, 'build//static')));
 
 app.use(bodyParser.urlencoded({ extended : false}))
 
@@ -87,6 +94,11 @@ app.put('/api/movies/:id', (req, res)=>{
         (err,data)=>{
             res.send(data);
         })
+})
+
+// When any url request is sent in, that does not match any of the routes specified above, the user should be send back the index html file
+app.get('*', (req, res)=> {
+    res.sendFile(path.join(__dirname+'/../build/index.html'));
 })
 
 app.listen(port, () => {
